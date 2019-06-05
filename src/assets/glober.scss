@@ -1,0 +1,292 @@
+/**
+注意一个ttf最多有38个图标
+@font-face {
+  font-family: 'iconfont';
+  src:url('iconfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+**/
+//必须存在的一个文件
+//页面间隙
+
+$radius:4px;
+
+$pageSpace:16px;
+$pageSpaceHalf:8px;
+$pageSpaceDouble:32px;
+
+
+//间距
+.margin{
+  margin: 16px;
+}
+.marginLeft{
+  margin-left: $pageSpace;
+}
+.marginRight{
+  margin-right: $pageSpace;
+}
+.marginTop{
+  margin-top: $pageSpace;
+}
+.marginBottom{
+  margin-bottom: $pageSpace;
+}
+
+.marginBottomHalf{
+  margin-bottom: $pageSpaceHalf;
+}
+.marginLeftHalf{
+  margin-left: $pageSpaceHalf;
+}
+.marginRightHalf{
+  margin-right: $pageSpaceHalf;
+}
+.marginTopHalf{
+  margin-top: $pageSpaceHalf;
+}
+
+.marginBottomDouble{
+  margin-bottom: $pageSpaceDouble;
+}
+.marginLeftDouble{
+  margin-left: $pageSpaceDouble;
+}
+
+.padding{
+  padding: $pageSpace;
+}
+.paddingLeft{
+  padding-left: $pageSpace;
+}
+.paddingRight{
+  padding-right: $pageSpace;
+}
+.paddingTop{
+  padding-top: $pageSpace;
+}
+.paddingBottom{
+  padding-bottom: $pageSpace;
+}
+
+.paddingHalf{
+  padding: $pageSpaceHalf;
+}
+.paddingHalfLeft{
+  padding-left: $pageSpaceHalf;
+}
+.paddingHalfTop{
+  padding-top: $pageSpaceHalf;
+}
+.paddingHalfBottom{
+  padding-bottom: $pageSpaceHalf;
+}
+.paddingHalfRight{
+  padding-right: $pageSpaceHalf;
+}
+
+
+//边框
+.gPicRadiuTopLeftRight{
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+.gBorderBottom{
+  border-bottom: solid 1px #e7e7e7;
+}
+
+.gborder{
+  border: solid 1px #e7e7e7
+}
+
+.gBorderShadow6{
+  border-radius: $radius;
+  box-shadow:0px 2px 6px #d7d7d7;
+}
+
+
+
+//标题栏样式
+.gTitleBarText{
+  font-size: 20px;
+  color: white;
+}
+
+//列表
+.scrollContentDiv{//滚动视图加的div，主要是能支持下拉刷新
+  overflow:auto;
+  margin:auto;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
+//单行的列表
+.singleListCell{
+  padding: 16px;
+}
+
+.singleListCell div{
+  font-size: 16px;
+  color: black;
+  opacity: 0.81;
+}
+
+
+
+//文本
+.mulTwoLine{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.singleLine{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.gTextMain{//标题文本颜色
+  font-size: 16px;
+  color: black;
+  opacity: 0.81;
+}
+
+
+
+.gtextBold{
+  font-weight: bold;
+}
+
+.gTextSub{//标题文本颜色
+  font-size: 14px;
+  color: black;
+  opacity: 0.81;
+}
+
+.gTextSubGray{//标题文本颜色
+  font-size: 14px;
+  color: black;
+  opacity: 0.51;
+}
+
+
+.size_title{
+  font-size: 16px;
+}
+
+.size_subtitle{
+  font-size: 14px;
+}
+
+
+.size_button{
+  font-size: 14px;
+}
+
+.size_caption{
+  font-size: 12px;
+}
+
+.gDetailHalfCycle{
+  width: 100%;
+  height: 16px;
+  background-color: white;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+
+
+
+
+
+
+$textMainColor:#b40000; //主价格的颜色
+$textSubColor:#959595;
+$backgroundColor:#f2f2f2;
+
+.cBottomBarHeight{
+  width: 100%;
+  height: 49px;
+  background-color: #fdfdfd;
+}
+
+.textMainColor{
+  color: $textMainColor;
+}
+
+.textSubColor{
+  color:$textSubColor
+}
+
+.meskBgColor{
+  background-color: #f2f2f2;
+}
+
+
+
+
+.color_main{
+  color: rgba(0,0,0,0.81);
+}
+
+
+
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rowCenter{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.rowBetween{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.rowAround{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.col{
+  display: flex;
+  flex-direction: column;
+}
+
+.colCenter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.colBetween{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.colAround{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+

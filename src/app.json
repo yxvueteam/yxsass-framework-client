@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/common_pages/listpage/main",
+    "pages/plugins/yxcache/main",
+    "pages/plugins/yxnet/main",
+    "pages/plugins/yxlogger/main",
+    "pages/index/main",
+    "pages/logs/main"
+  ],
+
+  "navigateToMiniProgramAppIdList": [
+    "wx214c28cc8c5d8337"
+  ],
+
+
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff0000",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white",
+    "navigationStyle":"custom"
+  }
+}

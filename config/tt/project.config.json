@@ -1,0 +1,31 @@
+{
+    "description": "项目配置文件。",
+    "setting": {
+        "urlCheck": true,
+        "es6": false,
+        "postcss": true,
+        "minified": true,
+        "newFeature": true
+    },
+    "compileType": "miniprogram",
+    "appid": "wxb1b7857c468d1175",
+    "projectname": "yx-sass-client",
+    "condition": {
+        "search": {
+            "current": -1,
+            "list": []
+        },
+        "conversation": {
+            "current": -1,
+            "list": []
+        },
+        "game": {
+            "currentL": -1,
+            "list": []
+        },
+        "miniprogram": {
+            "current": -1,
+            "list": []
+        }
+    }
+}
