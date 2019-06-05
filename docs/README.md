@@ -11,6 +11,3 @@
 使用手册：
 http://mpvue.com/mpvue/#_2
 
----
-* test2555666
----
