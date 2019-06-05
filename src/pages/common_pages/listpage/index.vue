@@ -1,13 +1,15 @@
 <!--
    author: zhangwei
    desc:
-   用途:
+   注意：
+     1. 这里要scroll-view支持下拉刷新和上拉加载，需要在scroll-view下添加div包住内容，
+        并设置类scrollContentDiv
+     2. 这个时候scroll-view的事件不支持了
+     3. 最外层的高度需要比屏幕高度高 一些
 -->
 <template>
-   <div class="cRoot">
-      <scroll-view scroll-y
-                    
-                   style="height: 100%">
+   <div class="cRoot" :style="{height: getScreenHeight}">
+      <scroll-view scroll-y style="height: 100%">
           <div class="scrollContentDiv">
                <div v-for="(item,index) in items" :key="index">
                    <div class="cItem">{{item.name}}</div>
@@ -28,6 +30,7 @@
                 param:null,
                 page:1,
                 limit:10,
+                count:1
             }
         },
 
@@ -44,14 +47,52 @@
             this.reqNetData()
         },
 
+
+
+		onReachBottom(){
+            if((this.param.page + 1) * this.limit > this.count){
+                this.$log.debug(this, 'onReachBottom', "到底部了")
+				return
+            }
+
+			this.param.page = this.param.page + 1
+			this.reqNetData(true)
+		},
+
+		onPullDownRefresh(){
+			this.param.page = 1
+			this.reqNetData(false)
+		},
+
+        computed:{
+	        getScreenHeight(){
+	        	return (this.$store.getters.screen.screenHeight + 10) + 'px'
+            }
+        },
+
         methods:{
-            reqNetData(){
+            reqNetData(loadmore){
                 this.$net.netReq('get', this.action, this.param)
                     .then((res)=>{
-                    	this.items = res.results
+                    	if(!loadmore){
+                    		this.items = []
+		                    this.items = res.results
+                            this.$sys.stopRefresh()
+                        }else{
+		                    this.items.concat(res.results)
+                        }
+                        this.count = res.count
                     }).catch((err)=>{
+                        if(loadmore){
+	                        this.param.page = this.param.page - 1;
+                        }else{
+	                        this.$sys.stopRefresh()
+                        }
+                    })
+            },
 
-                })
+	        loadMore(){
+            	console.log("load more")
             }
         }
 	}
@@ -61,7 +102,6 @@
 
     .cRoot{
         width: 100%;
-        height: 100vh;
         background-color: yellow;
     }
 

@@ -16,9 +16,8 @@ Vue.prototype.$log = YxLogger
 //import strUtils from "./utils/strUtils"
 //Vue.prototype.$str = strUtils
 //
-//import store from './store'
-//// import store from './store_dhsh_user'
-//Vue.prototype.$store = store
+import store from './store'
+Vue.prototype.$store = store
 //
 //import pages from './assets/config_page'
 //// import pages from './assets/config_page_dhsh_user'
@@ -36,6 +35,10 @@ Vue.prototype.$net = YxFly
 //导入导航模块
 import YxRoute from 'yx-route'
 Vue.prototype.$route = YxRoute
+
+//导入平台模块
+import YxPlatform from './utils/Platform'
+Vue.prototype.$sys = YxPlatform
 //
 //import '@/assets/icon/iconfont.css'
 
