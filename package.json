@@ -32,6 +32,7 @@
     "yx-cache": "^1.0.2",
     "yx-logger": "^1.0.5",
     "yx-net": "^1.0.1",
+    "yx-route": "^1.0.0",
     "yxhd-ui": "^1.0.2"
   },
   "devDependencies": {

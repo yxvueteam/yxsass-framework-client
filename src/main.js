@@ -28,10 +28,15 @@ Vue.prototype.$log = YxLogger
 import request from './assets/config_http_req'
 Vue.prototype.$request = request
 
+//导入网络模块
 import YxFly from 'yx-net'
 YxFly.init(mpvuePlatform)
 YxFly.setUrl(YxConfig.url)
 Vue.prototype.$net = YxFly
+
+//导入导航模块
+import YxRoute from 'yx-route'
+Vue.prototype.$route = YxRoute
 //
 //import '@/assets/icon/iconfont.css'
 
