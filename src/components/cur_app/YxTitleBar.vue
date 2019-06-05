@@ -25,9 +25,8 @@
                          @touchstart="touchstartReturn"
                          :style="{backgroundColor:touchColor}"
                          class="paddingHalf">
-                        <yx-icon name="icon-arrow-left"
-                                 :size="20"
-                                 color="#ffffff"></yx-icon>
+                        <i class="iconfont icon-arrow-left"
+                           style="font-size: 20px;color:#ffffff "></i>
                     </div>
                     <div class="gTitleBarText cSubTitle singleLine">{{title}}</div>
                 </div>
@@ -49,10 +48,8 @@
 </template>
 
 <script>
-	import YxIcon from "../icon/YxIcon";
-
 	export default {
-		components:{ YxIcon },
+
 		name:"yx-title-bar",
 
 		props:{

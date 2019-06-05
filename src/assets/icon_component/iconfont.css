@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'iconfont';
+  src:url('iconfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-kulian:before {
+  content: "\e603";
+}
+
+.icon-arrow-left:before {
+  content: "\e600";
+}
+

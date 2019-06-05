@@ -1,36 +1,57 @@
 <!--
    author: zhangwei
-   desc:
+   desc:  列表请求
    注意：
-     1. 这里要scroll-view支持下拉刷新和上拉加载，需要在scroll-view下添加div包住内容，
-        并设置类scrollContentDiv
-     2. 这个时候scroll-view的事件不支持了
-     3. 最外层的高度需要比屏幕高度高 一些
 -->
 <template>
-   <div class="cRoot" :style="{height: getScreenHeight}">
-      <scroll-view scroll-y style="height: 100%">
-          <div class="scrollContentDiv">
-               <div v-for="(item,index) in items" :key="index">
-                   <div class="cItem">{{item.name}}</div>
-               </div>
-          </div>
-      </scroll-view>
+   <div class="col">
+       <div>
+           <yx-title-bar title="info"></yx-title-bar>
+       </div>
+       <div>
+           <div v-for="(item,index) in items" :key="index">
+               <div class="cItem">{{item.name}}</div>
+           </div>
+       </div>
+
+       <!-- 到底部了显示 -->
+       <div v-if="isBottom">
+           <support></support>
+       </div>
+
+       <!-- 请求状态展示 -->
+       <div class="cLoading" v-if="!isReqSuccess">
+           <net-loading
+               @onReload="relaodData"
+               :error="error"></net-loading>
+       </div>
    </div>
 </template>
 
 <script>
-	export default {
-		name:"index",
+
+	import Support from "../../../components/cur_app/Support";
+    import NetLoading from "../../../components/cur_app/NetLoading";
+	import YxTitleBar from "../../../components/cur_app/YxTitleBar";
+
+    export default {
+	    components:{
+		    YxTitleBar,
+		    NetLoading,
+		    Support
+        },
+	    name:"index",
 
         data(){
 			return {
 				items:[],
                 action:null,
                 param:null,
-                page:1,
                 limit:10,
-                count:1
+                count:1,
+				isBottom:false,
+                error:null,
+                isReqSuccess:false,
             }
         },
 
@@ -42,15 +63,25 @@
 
             this.action = options.action
             this.param = options.param
-            this.param.page = this.page
+            this.param.page = 1
             this.param.limit = this.limit
             this.reqNetData()
         },
 
-
+        onUnload(){
+	        this.items=[]
+            this.action=null
+            this.param=null
+            this.limit=10
+            this.count=1
+            this.isBottom=false
+            this.error=null
+        },
 
 		onReachBottom(){
-            if((this.param.page + 1) * this.limit > this.count){
+            var isLastPage = this.param.page  * this.limit > this.count
+            if(isLastPage){
+            	this.isBottom = true
                 this.$log.debug(this, 'onReachBottom', "到底部了")
 				return
             }
@@ -60,26 +91,32 @@
 		},
 
 		onPullDownRefresh(){
+			this.isBottom =false
 			this.param.page = 1
 			this.reqNetData(false)
 		},
 
-        computed:{
-	        getScreenHeight(){
-	        	return (this.$store.getters.screen.screenHeight + 10) + 'px'
-            }
-        },
-
         methods:{
+
+	    	/** 失败重新加载，只有第一次进来的时候需要操作**/
+	    	relaodData(){
+	    		this.error = null
+	    		this.reqNetData(false)
+            },
+	        /**
+             *  请求网络数据
+	         * @param loadmore
+	         */
             reqNetData(loadmore){
                 this.$net.netReq('get', this.action, this.param)
                     .then((res)=>{
+                    	this.isReqSuccess = true;
                     	if(!loadmore){
                     		this.items = []
 		                    this.items = res.results
                             this.$sys.stopRefresh()
                         }else{
-		                    this.items.concat(res.results)
+		                    this.items = this.items.concat(res.results)
                         }
                         this.count = res.count
                     }).catch((err)=>{
@@ -88,35 +125,31 @@
                         }else{
 	                        this.$sys.stopRefresh()
                         }
+                        this.error = err;
+                        if(this.items.length != 0){
+                        	this.$sys.toast(err.returnMessage,3)
+                        }
                     })
             },
 
-	        loadMore(){
-            	console.log("load more")
-            }
         }
 	}
 </script>
 
 <style scoped>
 
-    .cRoot{
-        width: 100%;
-        background-color: yellow;
-    }
-
-   .clist {
-      overflow:auto;
-      margin:auto;
-      position:absolute;
-      top:0;
-      bottom:0;
-      left:0;
-      right:0;
-   }
 
    .cItem{
       width: 100%;
       height: 100px;
    }
+
+    .cLoading{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 99;
+    }
 </style>

@@ -35,41 +35,30 @@ var YxCache = {
 	 * @param callback : 回调函数，成功为true, 失败返回false
 	 */
 	clearStorage:(callback)=>{
-    if(YxCache.platform == YxCache.PLATFORM_WX){
-        wx.clearStorage(
-	        {
-		        success(res){
-		            callback(true)
-		        },
-		        fail(err){
-			        callback(false)
-		        }
-	        }
-        )
-    }else if(YxCache.platform == YxCache.PLATFORM_TT){
-        tt.clearStorage()
-    }else if(YxCache.platform == YxCache.PLATFORM_MY){
-        my.clearStorage()
-    }else if(YxCache.platform == YxCache.PLATFORM_SWAN){
-        swan.clearStorage()
-    }
-    else{
-      YxLogger.error(tag, 'clearStorage', '没有找到平台')
-    }
+	  try{
+		  mpvue.clearStorage(
+			  {
+				  success(res){
+					  callback(true)
+				  },
+				  fail(err){
+					  callback(false)
+				  }
+			  }
+		  )
+      }catch (err){
+		  YxLogger.error(tag, 'clearStorage', '没有找到平台')
+      }
   },
   
   /**
    * 清除本地数据缓存的同步接口。
    */
   clearStorageSync:()=>{
-    if(YxCache.platform == YxCache.PLATFORM_WX){
-      wx.clearStorageSync()
-    }else if(YxCache.platform == YxCache.PLATFORM_TT){
-      tt.clearStorageSync()
-    }else if(YxCache.platform == YxCache.PLATFORM_MY){
-      my.clearStorageSync()
-    }else{
-      YxLogger.error(tag, 'clearStorageSync', '没有找到平台')
+    try{
+      mpvue.clearStorageSync()
+    }catch (err){
+	    YxLogger.error(tag, 'clearStorageSync', '没有找到平台')
     }
   },
   
@@ -81,40 +70,15 @@ var YxCache = {
    */
   getStorage:(key,callback)=>{
     try{
-      if(YxCache.platform == YxCache.PLATFORM_WX){
-        wx.getStorage({
-          key: key,
-          success (res) {
-            callback(res)
-          },
-          fail(err){
-            callback(null)
-          }
-        })
-      }else if(YxCache.platform == YxCache.PLATFORM_TT){
-        tt.getStorage({
-          key: key,
-          success (res) {
-            callback(res)
-          },
-          fail(err){
-            callback(null)
-          }
-        })
-      }else if(YxCache.platform == YxCache.PLATFORM_MY){
-        my.getStorage({
-          key: key,
-          success (res) {
-            callback(res)
-          },
-          fail(err){
-            callback(null)
-          }
-        })
-      }else{
-        YxLogger.error(tag, 'getStorage', '没有找到平台')
-        callback(null)
-      }
+	    mpvue.getStorage({
+		    key: key,
+		    success (res) {
+			    callback(res)
+		    },
+		    fail(err){
+			    callback(null)
+		    }
+	    })
     }catch (err){
       //throw new YxLogger.except(tag, 'getStorage', err.name, err.message)
       YxLogger.error(tag, 'getStorage', err.name + err.message)
@@ -129,16 +93,8 @@ var YxCache = {
    */
   getStorageSync:(key)=>{
     try{
-      var values = ""
-      if(YxCache.platform == YxCache.PLATFORM_WX){
-        values = wx.getStorageSync(key)
-      }else if(YxCache.platform == YxCache.PLATFORM_TT){
-        values = tt.getStorageSync(key)
-      }else if(YxCache.platform == YxCache.PLATFORM_MY){
-        values = my.getStorageSync(key)
-      }else{
-        YxLogger.error(tag, 'getStorageSync', '没有找到平台')
-      }
+      var values = "";
+	  values = mpvue.getStorageSync(key)
       if(YxCache.isDebug){
         console.log("getStorageSync===>key:" + key)
         console.log(values)
@@ -148,7 +104,6 @@ var YxCache = {
     }catch(err){
       YxLogger.error(tag, 'getStorageSync', err.name + err.message)
       return ""
-      //throw new YxLogger.except(tag, 'getStorageSync', err.name, err.message)
     }
     
   },
@@ -161,33 +116,17 @@ var YxCache = {
    * @param data
    */
   setStorage:(key,data)=>{
-    if(YxCache.isDebug){
-      console.log("setStorage===>key:" + key)
-      console.log(data)
-      console.log("setStorage===>end")
-    }
-    
-    
+     if(YxCache.isDebug){
+       console.log("setStorage===>key:" + key)
+       console.log(data)
+       console.log("setStorage===>end")
+     }
      try{
-       if(YxCache.platform == YxCache.PLATFORM_WX){
-         wx.setStorage({
-           key:key,
-           data:data
-         },
-         )
-       }else if(YxCache.platform == YxCache.PLATFORM_TT){
-         tt.setStorage({
-           key:key,
-           data:data
-         })
-       }else if(YxCache.platform == YxCache.PLATFORM_MY){
-         my.setStorage({
-           key:key,
-           data:data
-         })
-       }else{
-         YxLogger.error(tag, 'setStorage', '没有找到平台')
-       }
+	     mpvue.setStorage({
+			     key:key,
+			     data:data
+		     },
+	     )
      }catch(err) {
        YxLogger.error(tag, 'setStorage', err.name + err.message)
        //throw new YxLogger.except(tag, 'setStorage', err.name, err.message)
@@ -206,17 +145,7 @@ var YxCache = {
       console.log("setStorageSync===>end")
     }
     try{
-      if(YxCache.platform == YxCache.PLATFORM_WX){
-        wx.setStorageSync(key, data)
-      }else if(YxCache.platform == YxCache.PLATFORM_TT){
-        tt.setStorageSync(key, data)
-      }else if(YxCache.platform == YxCache.PLATFORM_MY){
-        my.setStorageSync(key, data)
-      }else if(YxCache.platform == YxCache.PLATFORM_SWAN){
-        swan.setStorageSync(key, data)
-      }else{
-        YxLogger.error(tag, 'setStorageSync', '没有找到平台')
-      }
+	    mpvue.setStorageSync(key, data)
     }catch(err) {
       YxLogger.error(tag, 'setStorageSync', err.name + err.message)
       //throw new YxLogger.except(tag, 'setStorageSync', err.name, err.message)
@@ -228,17 +157,15 @@ var YxCache = {
      */
   getStorageInfo:(callback)=>{
       try{
-          if(YxCache.platform == YxCache.PLATFORM_WX){
-              wx.getStorageInfo({
-                  success (res) {
-                      callback(res)
-                      if(YxCache.isDebug){
-                          YxLogger.debug(tag,'getStorageInfo', "keys:" + JSON.stringify(res.keys)
-	                          + ",size:" + res.currentSize + ",limitSize:" + res.limitSize)
-                      }
-                  }
-              })
-          }
+	      mpvue.getStorageInfo({
+		      success (res) {
+			      callback(res)
+			      if(YxCache.isDebug){
+				      YxLogger.debug(tag,'getStorageInfo', "keys:" + JSON.stringify(res.keys)
+					      + ",size:" + res.currentSize + ",limitSize:" + res.limitSize)
+			      }
+		      }
+	      })
       }catch (err){
           YxLogger.error(tag, 'getStorageInfo', err.name + err.message)
       }
@@ -249,16 +176,14 @@ var YxCache = {
 	 */
 	getStorageInfoSync:()=>{
      try{
-	     if(YxCache.platform == YxCache.PLATFORM_WX){
-		     const res = wx.getStorageInfoSync()
-		     return res
-		     if(YxCache.isDebug){
-			     YxLogger.debug(tag,'getStorageInfoSync',
-				     "keys:" + JSON.stringify(res.keys)
-				     + "size:" + res.currentSize
-				     + ",limitSize:" + res.limitSize)
-		     }
+	     const res = mpvue.getStorageInfoSync()
+	     if(YxCache.isDebug){
+		     YxLogger.debug(tag,'getStorageInfoSync',
+			     "keys:" + JSON.stringify(res.keys)
+			     + "size:" + res.currentSize
+			     + ",limitSize:" + res.limitSize)
 	     }
+	     return res
      }catch (err){
 	     YxLogger.error(tag, 'getStorageInfoSync', err.name + err.message)
      }
@@ -266,16 +191,14 @@ var YxCache = {
   
   removeStorage:()=>{
      try{
-	     if(YxCache.platform == YxCache.PLATFORM_WX){
-		     wx.removeStorage({
-			     key: 'key',
-			     success (res) {
-				     if(YxCache.isDebug){
-					     YxLogger.debug(tag,'removeStorage','移除成功')
-				     }
+	     mpvue.removeStorage({
+		     key: 'key',
+		     success (res) {
+			     if(YxCache.isDebug){
+				     YxLogger.debug(tag,'removeStorage','移除成功')
 			     }
-		     })
-	     }
+		     }
+	     })
      }catch (err){
 	     YxLogger.error(tag, 'removeStorage', err.name + err.message)
      }
@@ -283,11 +206,9 @@ var YxCache = {
   
   removeStorageSync:(key)=>{
 	  try{
-		  if(YxCache.platform == YxCache.PLATFORM_WX){
-			  wx.removeStorageSync(key)
-			  if(YxCache.isDebug){
-				  YxLogger.debug(tag,'removeStorageSync','移除成功,key:' + key)
-			  }
+		  mpvue.removeStorageSync(key)
+		  if(YxCache.isDebug){
+			  YxLogger.debug(tag,'removeStorageSync','移除成功,key:' + key)
 		  }
 	  }catch (err){
 		  YxLogger.error(tag, 'removeStorage', err.name + err.message)

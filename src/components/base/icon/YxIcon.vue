@@ -22,7 +22,7 @@
     <div class="cIconRoot"
          :style="{backgroundColor:backgroundColor,padding:padding + 'px'}"
          @click="onClick">
-        <i :class="['iconfont',name]"
+        <i :class="getClassName"
            :style="{fontSize:size+'px',color:color}"></i>
     </div>
 </template>
@@ -58,6 +58,12 @@
 			}
 		},
 
+        computed:{
+	        getClassName(){
+	        	var ss = 'iconfont' + " " + this.name
+	        	return ss
+            }
+        },
 
 		methods:{
 			onClick(){

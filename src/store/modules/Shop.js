@@ -1,4 +1,4 @@
-import strUtil from '@/utils/strUtils'
+import strUtil from '@/utils/StrUtils'
 
 const state = {
   

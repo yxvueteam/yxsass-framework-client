@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 import YxLogger from 'yx-logger'
 //
-//import Shop from './modules/Shop'
+import Shop from './modules/Shop'
 //import User from './modules/User'
 
 
@@ -89,7 +89,7 @@ export default new Vuex.Store({
   
   
   modules: {
-    //shop:Shop,
+    shop:Shop,
     //user:User,
   },
   

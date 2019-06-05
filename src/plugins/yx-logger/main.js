@@ -143,10 +143,9 @@ var YxLogger = {
    */
   writeCache:()=>{
     try{
-      var jsonObj = JSON.stringify(YxLogger.logs)
-      if(YxLogger.platform == YxLogger.PLATFORM_WX){
-        wx.setStorageSync(YxLogger.LOGGER_NAME, jsonObj)
-      }
+      var jsonObj = JSON.stringify(YxLogger.logs);
+      mpvue.setStorageSync(YxLogger.LOGGER_NAME, jsonObj)
+
     }catch(err){
     
     }
@@ -157,14 +156,12 @@ var YxLogger = {
    */
   getCache:(callback)=>{
     try{
-      if(YxLogger.platform == YxLogger.PLATFORM_WX){
-        wx.getStorage({
+        mpvue.getStorage({
           key: YxLogger.LOGGER_NAME,
           success: function(res) {
               callback(res.data)
           }
         })
-      }
     }catch(err){
       return null
     }

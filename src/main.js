@@ -4,8 +4,7 @@ import App from './App'
 import YxConfig from './assets/YxConfig'
 Vue.prototype.$config = YxConfig
 
-import YxLogger from 'yx-logger'
-Vue.prototype.$log = YxLogger
+
 
 //import wxUtils from "./utils/wxUtils"
 //Vue.prototype.$sys = wxUtils
@@ -18,29 +17,29 @@ Vue.prototype.$log = YxLogger
 //
 import store from './store'
 Vue.prototype.$store = store
-//
-//import pages from './assets/config_page'
-//// import pages from './assets/config_page_dhsh_user'
-//Vue.prototype.$pages = pages
-//
-import request from './assets/config_http_req'
-Vue.prototype.$request = request
+
+//导入日志模块
+//import YxLogger from 'yx-logger'
+import YxLogger from './plugins/yx-logger/main'
+Vue.prototype.$log = YxLogger
 
 //导入网络模块
-import YxFly from 'yx-net'
+//import YxFly from 'yx-net'
+import YxFly from "./plugins/yx-net/main"
 YxFly.init(mpvuePlatform)
 YxFly.setUrl(YxConfig.url)
 Vue.prototype.$net = YxFly
 
 //导入导航模块
-import YxRoute from 'yx-route'
+//import YxRoute from 'yx-route'
+import YxRoute from './plugins/yx-route/main'
 Vue.prototype.$route = YxRoute
 
 //导入平台模块
 import YxPlatform from './utils/Platform'
 Vue.prototype.$sys = YxPlatform
 //
-//import '@/assets/icon/iconfont.css'
+import '@/assets/icon_component/iconfont.css'
 
 Vue.config.productionTip = false
 App.mpType = 'app'

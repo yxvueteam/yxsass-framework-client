@@ -4,22 +4,15 @@
 
 import YxLogger from "yx-logger";
 import YxCache from '../yx-cache/main'
-//import YxCache from "yx-cache"
 
-var FLY_MY = null
 var FLY = null
-var FLY_WEEX = null
-try{
-    FLY_MY = require("flyio/dist/npm/ap")
-    FLY = require("flyio/dist/npm/wx")
-    FLY_WEEX = require("flyio/dist/npm/weex")
-}catch(err) {
-  //console.error("YxFly -> 不是app平台无法导入weex库")
+if (mpvuePlatform === 'my') { //蚂蚁小程序
+	FLY = require("flyio/dist/npm/ap");
+}else{
+	FLY = require("flyio/dist/npm/wx"); //微信小程序、头条小程序、百度小程序
 }
 
 var TAG = 'YxFly'
-
-
 var YxFly = {
   
     fly:null,
@@ -47,13 +40,7 @@ var YxFly = {
             YxLogger.debug(TAG, 'init', '初始化平台:' + platform)
         }
         if(YxFly.fly == null){
-            if(platform == YxFly.PLATFORM_MY){
-             YxFly.fly = new FLY_MY()
-            }else if(platform == YxFly.PLATFORM_WEEX){
-             YxFly.fly = new FLY_WEEX()
-            }else{
-             YxFly.fly = new FLY()
-            }
+	        YxFly.fly = new FLY()
         }else {
          if(YxFly.isDebug){
              YxLogger.debug(TAG, 'init', '已经初始化化了')
@@ -152,7 +139,7 @@ var YxFly = {
           errInfo.desc = err.response.data.desc
         }else{//业务处理错误
           errInfo.returnCode = '10003'
-          errInfo.returnMsg = '业务请求错误'
+          errInfo.returnMsg = '接口请求错误'
           errInfo.desc = JSON.stringify(err.response.data)
         }
         if(YxFly.isDebug){
