@@ -32,7 +32,12 @@
                     <div class="gTitleBarText cSubTitle singleLine">{{title}}</div>
                 </div>
 
-                <div class="gTitleBarText cTextMiddle" v-else>{{title}}</div>
+                <div class="gTitleBarText cTextMiddle" v-else>
+                    <div>
+
+                    </div>
+                    <div>{{title}}</div>
+                </div>
             </div>
         </div>
 

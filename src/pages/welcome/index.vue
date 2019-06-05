@@ -8,11 +8,11 @@
 </template>
 
 <script>
+
 	export default {
 		name:"index",
 
         onload(){
-
         }
 	}
 </script>

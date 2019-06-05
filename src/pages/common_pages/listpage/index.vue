@@ -6,7 +6,7 @@
 <template>
    <div class="cRoot">
       <scroll-view scroll-y
-
+                    
                    style="height: 100%">
           <div class="scrollContentDiv">
                <div v-for="(item,index) in items" :key="index">

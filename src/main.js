@@ -4,8 +4,7 @@ import App from './App'
 import YxConfig from './assets/YxConfig'
 Vue.prototype.$config = YxConfig
 
-import YxLogger from './plugins/yx-logger'
-//import YxLogger from 'yx-logger'
+import YxLogger from 'yx-logger'
 Vue.prototype.$log = YxLogger
 
 //import wxUtils from "./utils/wxUtils"
