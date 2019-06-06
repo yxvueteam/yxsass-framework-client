@@ -17,8 +17,10 @@
         },
 
         mounted(){
-		    //this.$route.navigateTo("/pages/common_pages/listpage/main")
-            this.$route.navigateTo('/pages/common_pages/tabspage/main')
+  		    //this.$route.navigateTo("/pages/common_pages/listpage/main")
+          //this.$route.navigateTo('/pages/common_pages/tabspage/main')
+          this.$route.navigateTo('/pages/plugins/yxbutton/main')
+          //this.$route.navigateTo('/pages/plugins/yxcheckboxgroup/main')
         },
 
         methods:{
