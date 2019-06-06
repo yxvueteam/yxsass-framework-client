@@ -70,7 +70,7 @@ export default new Vuex.Store({
         state.screen.screenScale = obj.windowWidth / 375;
         state.screen.pixelRatio = obj.pixelRatio;
         state.screen.statusBarHeight = obj.statusBarHeight;
-        state.screen.topBarHeight = obj.statusBarHeight + 47;
+        state.screen.topBarHeight = obj.statusBarHeight + state.screen.screenScale * 48;
         state.screen.screenHeight = obj.screenHeight
         state.screen.screenMainHeight = obj.screenHeight - state.screen.topBarHeight - state.screen.bottomBarHeight
         if(obj.model.indexOf('iPhone X') != -1){

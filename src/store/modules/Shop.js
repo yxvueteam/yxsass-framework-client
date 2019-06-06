@@ -1,4 +1,4 @@
-import strUtil from '@/utils/StrUtils'
+import strUtil from 'yx-strutil'
 
 const state = {
   

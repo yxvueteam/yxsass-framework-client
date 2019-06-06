@@ -14,7 +14,7 @@
 -->
 <template>
     <div>
-        <div class="col cFixTop" :style="{height:getStateBarHeight}">
+        <div class="col cFixTop" :style="{height:getStateBarHeight,backgroundColor:getBgColorTitle}">
             <div :style="{height:getTitleHeight, backgroundColor:getBgColorTitle}"></div>
 
             <div class="cTitleBar row" :style="{backgroundColor:getBgColorTitle}">
@@ -81,8 +81,6 @@
 
 			getStateBarHeight(){
 				var height = this.$store.getters.screen.topBarHeight + 'px';
-
-				console.log("height==" + height)
 				return height
 			},
 
@@ -123,7 +121,7 @@
 
     .cTitleBar{
         width: 100%;
-        height: 47px;
+        height: 48px;
     }
 
     .cTextMiddle{

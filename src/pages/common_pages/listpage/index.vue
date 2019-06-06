@@ -2,6 +2,10 @@
    author: zhangwei
    desc:  列表请求
    注意：
+
+   请求参数样式:
+        param是经过url编码的
+        page&action=xxx&param=xx
 -->
 <template>
    <div class="col">
@@ -65,7 +69,11 @@
             this.param = options.param
             this.param.page = 1
             this.param.limit = this.limit
-            this.reqNetData()
+
+        },
+
+        onShow(){
+	        this.reqNetData()
         },
 
         onUnload(){
@@ -112,7 +120,6 @@
                     .then((res)=>{
                     	this.isReqSuccess = true;
                     	if(!loadmore){
-                    		this.items = []
 		                    this.items = res.results
                             this.$sys.stopRefresh()
                         }else{
@@ -137,7 +144,6 @@
 </script>
 
 <style scoped>
-
 
    .cItem{
       width: 100%;

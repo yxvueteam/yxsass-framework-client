@@ -12,9 +12,8 @@ Vue.prototype.$config = YxConfig
 //import logUtils from "./utils/logUtils"
 //Vue.prototype.$log = logUtils
 //
-//import strUtils from "./utils/strUtils"
-//Vue.prototype.$str = strUtils
-//
+
+
 import store from './store'
 Vue.prototype.$store = store
 
@@ -22,6 +21,10 @@ Vue.prototype.$store = store
 //import YxLogger from 'yx-logger'
 import YxLogger from './plugins/yx-logger/main'
 Vue.prototype.$log = YxLogger
+
+//导入字符操作类
+import YxStrUtil from "yx-strutil"
+Vue.prototype.$str = YxStrUtil
 
 //导入网络模块
 //import YxFly from 'yx-net'

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/welcome/main",
+    "pages/common_pages/tabspage/main",
     "pages/common_pages/listpage/main",
     "pages/plugins/yxcache/main",
     "pages/plugins/yxnet/main",

@@ -17,7 +17,8 @@
         },
 
         mounted(){
-		    this.$route.navigateTo("/pages/common_pages/listpage/main")
+		    //this.$route.navigateTo("/pages/common_pages/listpage/main")
+            this.$route.navigateTo('/pages/common_pages/tabspage/main')
         },
 
         methods:{
