@@ -23,6 +23,7 @@
                                 :select-color="getSelectColor"
                                 font-color="#ffffff"
                                 mstyle="style3"
+                                :is-equal="true"
                                 :bg-color="getBgColor"></yx-tabs-header>
             </div>
             <div class="cTip"></div>
@@ -102,6 +103,7 @@
             options.param = {
 		    	shop:1,
             }
+            options.type = ""
 
             this.reqGetCategory(options.action, options.param)
         },

@@ -64,6 +64,7 @@
             options.param = {
 	            category:'0168a868'
             }
+            options.type = '',
 
             this.action = options.action
             this.param = options.param

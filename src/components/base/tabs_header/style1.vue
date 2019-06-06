@@ -62,7 +62,8 @@
 
 	        getLineWidth(){
 	        	if(this.isEqual || this.count > 5){
-			        var leng = this.$store.getters.screen.screenScale * 75
+	        		var len = 375 / Math.min(this.count, 5)
+			        var leng = this.$store.getters.screen.screenScale * len
 			        return leng + 'px';
                 }
 
