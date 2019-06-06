@@ -63,10 +63,11 @@
         computed:{
 
 	        getLineWidth(){
-	        	if(this.isEqual && this.count <= 5){
-			        var leng = this.$store.getters.screen.screenScale * 75
+		        if(this.isEqual || this.count > 5){
+			        var len = 375 / Math.min(this.count, 5)
+			        var leng = this.$store.getters.screen.screenScale * len
 			        return leng + 'px';
-                }
+		        }
 
 		        var leng = strUtil.getTextWidth(this.item.name,16)
                 var tip = 20;
