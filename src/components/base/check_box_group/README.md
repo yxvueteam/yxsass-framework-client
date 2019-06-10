@@ -31,8 +31,8 @@
 |`size`| `String` | `N` | `normal` | 大小样式：`big`/`normal`/`small`|
 |`checkedColor`| `String` | `N` | `#409eff` | 选中颜色 |
 |`unCheckedColor`| `String` | `N` | `#5f5f5f` | 未选中颜色 |
-|`checkedIcon`| `String` | `N` | `icon-circle-check` | 选中图标 |
-|`unCheckedIcon`| `String` | `N` | `icon-circle-check1` | 未选中图标 |
+|`checkedIcon`| `String` | `N` | `icon-check-select` | 选中图标 |
+|`unCheckedIcon`| `String` | `N` | `icon-check-unselect` | 未选中图标 |
 |`marginTop`| `String` | `N` | `10px` | 每一项离上边的间距 |
 |`width`| `String` | `N` | `80px` | 每项的宽度 |
 |`change`| `EventHandle` | `N` | `-` | 监听选项改变事件 |
