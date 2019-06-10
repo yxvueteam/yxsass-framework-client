@@ -13,8 +13,40 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-choose:before {
+  content: "\e614";
+}
+
+.icon-save-select:before {
+  content: "\e60d";
+}
+
+.icon-radio-check:before {
+  content: "\e609";
+}
+
+.icon-save-unselect:before {
+  content: "\e77f";
+}
+
 .icon-kulian:before {
   content: "\e603";
+}
+
+.icon-check-select:before {
+  content: "\e60a";
+}
+
+.icon-check-unselect:before {
+  content: "\e60c";
+}
+
+.icon-share:before {
+  content: "\e638";
+}
+
+.icon-like:before {
+  content: "\e601";
 }
 
 .icon-arrow-left:before {

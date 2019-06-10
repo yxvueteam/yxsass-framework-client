@@ -105,12 +105,12 @@
 
       checkedIcon:{  //选中图标
         type:String,
-        default:'icon-circle-check',
+        default:'icon-check-select',
       },
 
       unCheckedIcon:{  //未选中图标
         type: String,
-        default:'icon-circle-check1',
+        default:'icon-check-unselect',
       },
 
       marginTop:{//每一项离上边的间距
