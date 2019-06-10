@@ -17,7 +17,6 @@
          :style="{fontSize:getFontSize,
                   marginLeft:getFontMargin,
                   lineHeight:getFontSize,
-                  height:getFontSize,
                   color:checked?checkedColor:unCheckedColor}">{{label}}</div>
   </div>
 </template>
@@ -79,7 +78,7 @@
     },
 
     computed:{
-      getFontSize:function(){
+      getFontSize(){
          if(this.size == 'big'){
            return '18px'
          }
@@ -97,7 +96,7 @@
          }
       },
 
-      getFontMargin:function(){
+      getFontMargin(){
          if(this.size == 'big'){
            return '8px'
          }
@@ -115,7 +114,7 @@
          }
       },
 
-      getIconSize:function(){
+      getIconSize(){
         if(this.size == 'big'){
            return 18
          }
@@ -140,7 +139,7 @@
     },
 
     methods:{
-      onClickBox:function(){
+      onClickBox(){
         this.checked = !this.checked;
         var params = {
             checked:this.checked
