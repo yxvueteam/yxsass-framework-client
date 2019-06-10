@@ -129,7 +129,7 @@
     },
 
     computed:{
-      isCheckedAll:function(){
+      isCheckedAll(){
         let optLength = this.optList.length;
         let checkedCount = this.value.length;
         if(checkedCount == optLength){
@@ -141,15 +141,15 @@
       }
     },
 
-    onLoad:function(){
+    onLoad(){
       this.init()
     },
 
-    mounted:function() {
+    mounted() {
     },
 
     methods:{
-      init:function(){
+      init(){
         for(var i=0;i<this.value.length;i++){
           for(var j=0;j<this.optList.length;j++){
             if(this.value[i] == this.optList[j].value){
@@ -160,7 +160,7 @@
         }
       },
 
-      change:function(params,index){
+      change(params,index){
         var checked = params.checked;
         var val = this.optList[index].value;
         if(checked){
@@ -174,7 +174,7 @@
         this.$emit("change")
       },
 
-      onChangeSelectAll:function(params){
+      onChangeSelectAll(params){
         var checked = params.checked;
         if(checked){
           for(var i=0;i<this.optList.length;i++){
