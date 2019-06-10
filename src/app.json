@@ -6,6 +6,8 @@
     "pages/plugins/yxcache/main",
     "pages/plugins/yxnet/main",
     "pages/plugins/yxlogger/main",
+    "pages/plugins/yxbutton/main",
+    "pages/plugins/yxcheckboxgroup/main",
     "pages/index/main"
   ],
 
