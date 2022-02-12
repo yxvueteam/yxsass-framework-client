@@ -23,7 +23,7 @@
     "build": "node build/build.js wx"
   },
   "dependencies": {
-    "ajv": "^6.10.0",
+    "ajv": "^6.12.3",
     "dayjs": "^1.8.14",
     "flyio": "^0.6.6",
     "mpvue": "^2.0.0",
